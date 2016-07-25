@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -24,6 +28,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+/*
+var http = require('http');
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+io.sockets.on('connection',routes.vote);
+
+server.listen(app.get('port'),function(){
+    console.log('Express server listening on port' + app.get('port'));
+});
+*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
